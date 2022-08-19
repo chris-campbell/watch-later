@@ -1,0 +1,46 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+    body {
+        background-color: ${(p) => p.theme.colors.theaterBlue};
+    }
+
+    main {
+        min-height: 100vh;
+        padding: 4rem 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: ${(p) => p.theme.colors.summerOrange};
+    }
+    
+    p {
+        color: ${(p) => p.theme.colors.snow};
+    }
+
+    a {
+        color: ${(p) => p.theme.colors.cosmos};
+    }
+`;
+
+export const theme = {
+  colors: {
+    theaterBlue: "#03071e",
+    summerOrange: "#f26666",
+    cosmos: "#a64684",
+    snow: "#ffffff94",
+  },
+  fonts: ["Raleway"],
+  fontSizes: {
+    small: "1em",
+    medium: "2em",
+    large: "3em",
+  },
+};
+
+export default GlobalStyles;
