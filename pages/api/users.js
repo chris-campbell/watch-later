@@ -1,30 +1,18 @@
-import dbConnect from "../../lib/dbConnect";
-import User from "../../models/User";
+import { unstable_getServerSession } from "next-auth/next";
+import { authOptions } from "./auth/[...nextauth]";
 
 export default async function handler(req, res) {
-  const { method } = req;
+  const session = await unstable_getServerSession(req, res, authOptions);
 
-  await dbConnect();
-
-  switch (method) {
-    case "GET":
-      try {
-        const users = await User.find({});
-        res.status(200).json({ success: true, data: users });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    case "POST":
-      try {
-        const user = await User.create(req.body);
-        res.status(201).json({ success: true, data: user });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    default:
-      res.status(400).json({ success: false });
-      break;
+  if (session) {
+    return res.send({
+      session,
+      content:
+        "This is protected content. You can access this content because you are signed in.",
+    });
   }
+
+  res.send({
+    error: "You must be signed in to view the protected content on this page.",
+  });
 }

@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+    * {
+      font-family: ${(p) => p.theme.fonts[0]};
+      margin: 0;
+      padding: 0;
+    }
+
     body {
         background-color: ${(p) => p.theme.colors.theaterBlue};
     }
@@ -26,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     a {
         color: ${(p) => p.theme.colors.cosmos};
     }
+
 `;
 
 export const theme = {
