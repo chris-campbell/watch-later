@@ -1,13 +1,12 @@
 import React from "react";
+import DashboardComponent from "../components/dashboard/DashboardComponent";
 import { getSession } from "next-auth/react";
 
-const dashboard = (session) => {
-  console.log(session);
-
-  return <div>dashboard</div>;
+const Dashboard = (session) => {
+  return <DashboardComponent session={session} />;
 };
 
-export default dashboard;
+export default Dashboard;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
