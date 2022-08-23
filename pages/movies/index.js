@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardComponent from "../components/dashboard/DashboardComponent";
+import DashboardComponent from "../../components/dashboard/DashboardComponent";
 import { getSession } from "next-auth/react";
 
 const Dashboard = (session) => {

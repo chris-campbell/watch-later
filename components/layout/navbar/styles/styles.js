@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
   width: 100%;
-  padding: 1rem 1rem;
+  padding: 1.5rem 1rem;
   .nav-wrapper {
     display: flex;
     justify-content: space-between;
