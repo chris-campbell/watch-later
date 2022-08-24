@@ -8,7 +8,7 @@ function Layout({ children }) {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       {session && <Navbar />}
       <main>{children}</main>
       <Footer />

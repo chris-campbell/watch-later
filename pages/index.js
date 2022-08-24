@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
   if (session) {
     return {
       redirect: {
-        destination: "/dashboard",
+        destination: "/movies",
         permanent: false,
       },
     };

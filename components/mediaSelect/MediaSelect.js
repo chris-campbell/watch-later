@@ -24,9 +24,9 @@ const MediaSelectContainer = styled.div`
 `;
 
 const MediaSelect = ({ movies }) => {
+  console.log(movies);
   const listInnerRef = useRef();
 
-  console.log(movies);
   const onScroll = () => {
     console.log("rap");
     if (listInnerRef.current) {
