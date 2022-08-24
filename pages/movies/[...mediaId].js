@@ -120,7 +120,6 @@ const CastMember = styled.div`
 `;
 
 const MediaDetails = ({ movie, team }) => {
-  console.log(team);
   const [cast, setCast] = useState([]);
   const [directors, setDirectors] = useState([]);
 
