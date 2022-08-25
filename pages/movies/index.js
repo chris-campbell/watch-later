@@ -1,26 +1,30 @@
 import React from "react";
 import DashboardComponent from "../../components/dashboard/DashboardComponent";
-import { getSession } from "next-auth/react";
+import axios from "axios";
 
-const Dashboard = (session) => {
-  return <DashboardComponent session={session} />;
+const Dashboard = (movies) => {
+  return <DashboardComponent movies={movies.results} />;
 };
 
 export default Dashboard;
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export const getStaticProps = async (ctx) => {
+  const apiUrl = process.env.API_URL;
+  const apiKey = process.env.API_KEY;
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+  const moviesURL = `${apiUrl}movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+
+  let movies;
+
+  try {
+    const { data: moviesData } = await axios.get(moviesURL);
+
+    movies = moviesData;
+  } catch (error) {
+    console.log(error);
   }
 
   return {
-    props: { session },
+    props: movies,
   };
-}
+};

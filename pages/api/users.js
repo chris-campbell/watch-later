@@ -36,8 +36,4 @@ export default async function handler(req, res) {
       res.status(400).json({ success: false });
       break;
   }
-
-  // res.send({
-  //   error: "You must be signed in to view the protected content on this page.",
-  // });
 }

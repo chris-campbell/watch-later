@@ -3,12 +3,14 @@ import Image from "next/image";
 import Search from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import { signOut, useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 import * as S from "./styles/styles";
 import PeekABooSearchBar from "./peekABooSearchBar/PeekABooSearchBar";
 
 const Navbar = () => {
   const [toggle, setoggle] = useState(false);
+  const watchList = useSelector((state) => state.watcher.value).length;
 
   const toggleBar = () => {
     setoggle(!toggle);
@@ -39,7 +41,7 @@ const Navbar = () => {
             <div className="primary-nav-wrapper">
               <div className="watch-list">
                 Watch list
-                <span className="watch-list-count">11</span>
+                <span className="watch-list-count">{watchList}</span>
               </div>
 
               <S.Dropdown className="dropdown">

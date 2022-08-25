@@ -15,12 +15,6 @@ const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
         max-width: 1200px;
         margin: 0 auto;
-        /* padding: 4rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; */
     }
 
     h1, h2, h3, h4, h5, h6 {
