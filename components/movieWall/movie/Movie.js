@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import LinesEllipsis from "react-lines-ellipsis";
+import { addMovie } from "../../../redux/slices/watcherSlices";
+import { useDispatch } from "react-redux";
 
-const MediaCellContainer = styled.div`
+const MovieContainer = styled.div`
   overflow-y: hidden;
   position: relative;
   img {
@@ -81,9 +83,23 @@ const MediaCellContainer = styled.div`
   }
 `;
 
-const MediaCell = ({ id, title, poster_path, overview, release_date }) => {
+const Movie = ({ id, title, poster_path, overview, release_date }) => {
+  const dispatch = useDispatch();
+
+  const addMovieToWatchList = () => {
+    const movie = {
+      id,
+      title,
+      poster_path,
+      overview,
+      release_date,
+    };
+
+    dispatch(addMovie(movie));
+  };
+
   return (
-    <MediaCellContainer>
+    <MovieContainer>
       <Link passHref href={`/movies/${id}`}>
         <Image
           width={600}
@@ -93,7 +109,9 @@ const MediaCell = ({ id, title, poster_path, overview, release_date }) => {
       </Link>
       <div className="popdown">
         <div className="popdown-wrapper">
-          <AddBoxIcon />
+          <div onClick={() => addMovieToWatchList()} data-movie-id={id}>
+            <AddBoxIcon />
+          </div>
         </div>
       </div>
       <div className="popup">
@@ -102,7 +120,7 @@ const MediaCell = ({ id, title, poster_path, overview, release_date }) => {
             {title}
             <span className="date">{release_date.slice(0, 4)}</span>
           </h3>
-          <p className="overview">
+          <div className="overview">
             <LinesEllipsis
               text={overview}
               maxLine="3"
@@ -110,11 +128,11 @@ const MediaCell = ({ id, title, poster_path, overview, release_date }) => {
               trimRight
               basedOn="words"
             />
-          </p>
+          </div>
         </div>
       </div>
-    </MediaCellContainer>
+    </MovieContainer>
   );
 };
 
-export default MediaCell;
+export default Movie;

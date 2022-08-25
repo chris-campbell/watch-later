@@ -1,8 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import Genres from "../mostPopular/MostPopluar";
-import MediaSelect from "../mediaSelect/MediaSelect";
+import MovieWall from "../movieWall/MovieWall";
 import styled from "styled-components";
-import axios from "axios";
 
 const DashboardContainer = styled.div`
   display: grid;
@@ -10,31 +7,10 @@ const DashboardContainer = styled.div`
   margin-top: 2rem;
 `;
 
-const DashboardComponent = ({ session }) => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchMovies = async () => {
-      const { data } = await axios.get(
-        `${process.env.API_URL}movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`
-      );
-
-      setMovies(data.results);
-      setLoading(false);
-    };
-
-    fetchMovies();
-  }, []);
-
-  useEffect(() => {}, []);
-
-  if (loading) return "...loading";
-
+const DashboardComponent = ({ movies }) => {
   return (
     <DashboardContainer>
-      <MediaSelect movies={movies} />
+      <MovieWall movies={movies} />
     </DashboardContainer>
   );
 };

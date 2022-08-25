@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import Layout from "../components/layout/Layout";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "styled-components";
@@ -10,9 +12,11 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <SessionProvider session={pageProps.session}>
         <GlobalStyles />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
       </SessionProvider>
     </ThemeProvider>
   );

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import Image from "next/image";
+import Hero from "./hero/Hero";
+
+import styled from "styled-components";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -78,6 +80,21 @@ const Container = styled.div`
             color: #ffffff;
             margin-bottom: 2rem;
           }
+
+          .add-movie {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            svg {
+              font-size: 2rem;
+              color: ${({ theme }) => theme.colors.snow};
+              &:hover {
+                transform: scale(1.1);
+                transition: 400ms;
+              }
+            }
+          }
         }
       }
     }
@@ -119,11 +136,15 @@ const CastMember = styled.div`
   }
 `;
 
-const MediaDetails = ({ movie, team }) => {
+const MovieDetailsContainer = ({ movie, team }) => {
   const [cast, setCast] = useState([]);
   const [directors, setDirectors] = useState([]);
 
+  // Dispatch intialization
+  const dispatch = useDispatch();
+
   const {
+    id,
     title,
     poster_path,
     backdrop_path,
@@ -132,6 +153,12 @@ const MediaDetails = ({ movie, team }) => {
     vote_average,
     release_date,
   } = movie;
+
+  const addToWatch = () => {
+    const movie = { id, title, poster_path, overview, release_date };
+
+    dispatch(addMovie(movie));
+  };
 
   const imageURL = process.env.IMAGE_BASE_URL;
   const backdropSize = process.env.BACKDROP_SIZE;
@@ -149,44 +176,14 @@ const MediaDetails = ({ movie, team }) => {
 
   return (
     <Container bdURL={bd} poster={poster}>
-      <div className="hero">
-        <div className="hero-wrapper">
-          <div className="hero-poster">
-            <Image
-              src={`${process.env.IMAGE_BASE_URL}${process.env.POSTER_SIZE}${poster_path}`}
-              width={400}
-              height={600}
-            />
-          </div>
-
-          <div className="movie-details">
-            <div className="details-wrapper">
-              <h1>
-                {title}
-                <span className="date">{`(${release_date.slice(0, 4)})`}</span>
-              </h1>
-              <h3>Synopsis</h3>
-              <p>{overview}</p>
-
-              <div className="genres">
-                {genres.map((genre) => (
-                  <span className="genre">{genre.name}</span>
-                ))}
-              </div>
-
-              <h4>Popularity</h4>
-              <meter
-                min="0"
-                max="100"
-                optimum="100"
-                low="40"
-                high="70"
-                value={vote_average * 10}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Hero
+        title={title}
+        poster={poster_path}
+        date={release_date}
+        overview={overview}
+        genres={genres}
+        vote={vote_average}
+      />
       <MovieCast className="movie-cast">
         <div className="movie-cast-wrapper">
           {cast.map((member) =>
@@ -216,30 +213,4 @@ const MediaDetails = ({ movie, team }) => {
   );
 };
 
-export default MediaDetails;
-
-export async function getServerSideProps({ params }) {
-  const id = params.mediaId[0];
-  const apiUrl = process.env.API_URL;
-  const apiKey = process.env.API_KEY;
-
-  const movieURL = `${apiUrl}movie/${id}?api_key=${apiKey}&language=en-US`;
-  const teamURL = `${apiUrl}movie/${id}/credits?api_key=${apiKey}`;
-
-  let movie;
-  let team;
-
-  try {
-    const { data: movieData } = await axios.get(movieURL);
-    const { data: teamData } = await axios.get(teamURL);
-
-    movie = movieData;
-    team = teamData;
-  } catch (error) {
-    console.log(error);
-  }
-
-  return {
-    props: { movie, team },
-  };
-}
+export default MovieDetailsContainer;
