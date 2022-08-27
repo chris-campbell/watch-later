@@ -3,17 +3,26 @@ import Image from "next/image";
 import Search from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import { signOut, useSession } from "next-auth/react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { removeAllMovies } from "../../../redux/slices/watcherSlices";
+import { persistor } from "../../../redux/store";
+import Link from "next/link";
 import * as S from "./styles/styles";
 import PeekABooSearchBar from "./peekABooSearchBar/PeekABooSearchBar";
 
 const Navbar = () => {
   const [toggle, setoggle] = useState(false);
-  const watchList = useSelector((state) => state.watcher.value).length;
+  const dispatch = useDispatch();
+  const watchList = useSelector((state) => state.value).length;
 
   const toggleBar = () => {
     setoggle(!toggle);
+  };
+
+  const purge = async () => {
+    await persistor.purge();
+
+    dispatch(removeAllMovies());
   };
 
   const { data: session, loading } = useSession();
@@ -41,7 +50,7 @@ const Navbar = () => {
           <div className="primary-nav">
             <div className="primary-nav-wrapper">
               <div className="watch-list">
-                Watch list
+                <Link href="/movies/watch-list">Watch list</Link>
                 <span className="watch-list-count">{watchList}</span>
               </div>
 
@@ -50,6 +59,7 @@ const Navbar = () => {
                 <div className="dropdown-menu">
                   <ul>
                     <li onClick={() => signOut()}>Logout</li>
+                    <li onClick={() => purge()}>Clear</li>
                   </ul>
                 </div>
               </S.Dropdown>

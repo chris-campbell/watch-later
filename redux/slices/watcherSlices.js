@@ -14,8 +14,24 @@ const watcherSlice = createSlice({
         state.value.push(action.payload);
       }
     },
+    removeAllMovies(state) {
+      state.value = [];
+    },
+
+    removeMovie(state, action) {
+      var idx = state.value.findIndex(
+        (movie) => movie.id === action.payload.id
+      );
+
+      console.log({ idx });
+      if (idx === 0) {
+        state.value.shift();
+      } else {
+        state.value.splice(idx, 1);
+      }
+    },
   },
 });
 
-export const { addMovie } = watcherSlice.actions;
+export const { addMovie, removeAllMovies, removeMovie } = watcherSlice.actions;
 export default watcherSlice.reducer;

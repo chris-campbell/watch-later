@@ -38,8 +38,8 @@ const MovieDetailsContainer = ({ movie, team }) => {
       <Hero
         id={id}
         title={title}
-        poster={poster_path}
-        date={release_date}
+        poster_path={poster_path}
+        release_date={release_date}
         overview={overview}
         genres={genres}
         directors={directors}

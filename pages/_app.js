@@ -6,6 +6,8 @@ import GlobalStyles, { theme } from "./theme/theme";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
+import { persistor } from "../redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -19,7 +21,9 @@ function MyApp({ Component, pageProps }) {
           <Layout>
             <QueryClientProvider client={queryClient}>
               <Hydrate state={pageProps.dehydratedState}>
-                <Component {...pageProps} />
+                <PersistGate loading={null} persistor={persistor}>
+                  <Component {...pageProps} />
+                </PersistGate>
               </Hydrate>
             </QueryClientProvider>
           </Layout>

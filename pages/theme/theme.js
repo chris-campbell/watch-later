@@ -26,7 +26,11 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: ${(p) => p.theme.colors.cosmos};
+        color: ${(p) => p.theme.colors.snow};
+    }
+
+    .infinite-scroll-component {
+      overflow: hidden !important;
     }
 
 `;
