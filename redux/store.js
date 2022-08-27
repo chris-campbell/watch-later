@@ -1,8 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import watcherReducer from "./slices/watcherSlices";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import thunk from "redux-thunk";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, watcherReducer);
 
 export const store = configureStore({
-  reducer: {
-    watcher: watcherReducer,
-  },
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: [thunk],
 });
+
+export const persistor = persistStore(store);

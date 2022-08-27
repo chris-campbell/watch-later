@@ -7,8 +7,8 @@ import { addMovie } from "../../../redux/slices/watcherSlices";
 const Hero = ({
   id,
   title,
-  poster,
-  date,
+  poster_path,
+  release_date,
   directors,
   overview,
   genres,
@@ -17,19 +17,19 @@ const Hero = ({
   const dispatch = useDispatch();
 
   const addToWatch = () => {
-    const movie = { id, title, poster, overview, date };
+    const movie = { id, title, poster_path, overview, release_date };
+    console.log(movie);
     dispatch(addMovie(movie));
   };
 
   return (
     <div className="hero">
       <div className="hero-wrapper">
-        <Poster poster={poster} />
+        <Poster poster_path={poster_path} />
 
         <MovieInfo
           title={title}
-          poster={poster}
-          date={date}
+          release_date={release_date}
           overview={overview}
           genres={genres}
           vote={vote}

@@ -9,7 +9,7 @@ import * as S from "./styles/styles";
 
 const MovieInfo = ({
   title,
-  date,
+  release_date,
   overview,
   genres,
   vote,
@@ -19,7 +19,7 @@ const MovieInfo = ({
   return (
     <S.MovieDetailsContainer className="movie-details">
       <div className="details-wrapper">
-        <Title title={title} date={date} />
+        <Title title={title} date={release_date} />
         <Overview overview={overview} />
         <Genres genres={genres} />
         <PopularityMeter vote={vote} />
