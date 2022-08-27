@@ -1,30 +1,29 @@
 import React from "react";
 import DashboardComponent from "../../components/dashboard/DashboardComponent";
-import axios from "axios";
+import { useInfiniteQuery } from "react-query";
 
-const Dashboard = (movies) => {
-  return <DashboardComponent movies={movies.results} />;
-};
-
-export default Dashboard;
-
-export const getStaticProps = async (ctx) => {
+const Dashboard = () => {
   const apiUrl = process.env.API_URL;
   const apiKey = process.env.API_KEY;
 
-  const moviesURL = `${apiUrl}movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+  const { data, status, fetchNextPage, hasNextPage } = useInfiniteQuery(
+    "infiniteCharacters",
+    async ({ pageParam = 1 }) =>
+      await fetch(
+        `${apiUrl}movie/popular?api_key=${apiKey}&language=en-US&page=${pageParam}`
+      ).then((result) => result.json()),
+    {
+      getNextPageParam: (lastPage, pages) => {
+        if (lastPage.page < lastPage.total_pages) {
+          return pages.length + 1;
+        }
+      },
+    }
+  );
 
-  let movies;
+  const queryConsole = { data, status, fetchNextPage, hasNextPage };
 
-  try {
-    const { data: moviesData } = await axios.get(moviesURL);
-
-    movies = moviesData;
-  } catch (error) {
-    console.log(error);
-  }
-
-  return {
-    props: movies,
-  };
+  return <DashboardComponent query={queryConsole} />;
 };
+
+export default Dashboard;

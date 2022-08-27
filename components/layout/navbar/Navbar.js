@@ -32,8 +32,9 @@ const Navbar = () => {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={toggleBar}
             >
-              <Search onClick={toggleBar} />
+              <Search />
             </IconButton>
           </div>
 
