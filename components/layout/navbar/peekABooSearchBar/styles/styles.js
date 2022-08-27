@@ -5,7 +5,6 @@ const Container = styled.div`
   justify-content: center;
   padding: ${({ toggle }) => (toggle ? "1rem" : "0")};
   background-color: #070c2b;
-  height: ${({ toggle }) => console.log(toggle)};
   transition: height 500ms ease-in;
 
   input {

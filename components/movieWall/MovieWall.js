@@ -1,37 +1,35 @@
 import React from "react";
-import styled from "styled-components";
 import Movie from "./movie/Movie";
+import InfiniteScroll from "react-infinite-scroll-component";
+import FadeLoader from "react-spinners/FadeLoader";
+import * as S from "./styles/styles";
 
-const MovieWallContainer = styled.div`
-  min-height: 100vh;
-  padding: 1rem;
-  overflow-y: scroll;
-  height: 20vh;
-  .media-wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 1rem;
-    column-gap: 1rem;
+const MovieWall = ({ query }) => {
+  const { data, status, fetchNextPage, hasNextPage } = query;
 
-    @media (max-width: 784px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 500px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-`;
-
-const MovieWall = ({ movies }) => {
   return (
-    <MovieWallContainer>
-      <div className="media-wrapper">
-        {movies.map((movie) => (
-          <Movie key={movie.id} {...movie} />
-        ))}
-      </div>
-    </MovieWallContainer>
+    <S.MovieWallContainer>
+      {status === "success" && (
+        <InfiniteScroll
+          dataLength={data?.pages.length * 20}
+          next={fetchNextPage}
+          hasMore={hasNextPage}
+          loader={<FadeLoader color="#ff0000" />}
+        >
+          <div className="grid-container">
+            {data?.pages.map((page) => (
+              <>
+                <div className="media-wrapper">
+                  {page.results.map((movie) => (
+                    <Movie key={movie.id} {...movie} />
+                  ))}
+                </div>
+              </>
+            ))}
+          </div>
+        </InfiniteScroll>
+      )}
+    </S.MovieWallContainer>
   );
 };
 

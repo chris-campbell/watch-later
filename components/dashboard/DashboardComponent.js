@@ -1,17 +1,11 @@
 import MovieWall from "../movieWall/MovieWall";
-import styled from "styled-components";
+import * as S from "./styles/styles";
 
-const DashboardContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 2rem;
-`;
-
-const DashboardComponent = ({ movies }) => {
+const DashboardComponent = ({ query }) => {
   return (
-    <DashboardContainer>
-      <MovieWall movies={movies} />
-    </DashboardContainer>
+    <S.DashboardContainer>
+      <MovieWall query={query} />
+    </S.DashboardContainer>
   );
 };
 
