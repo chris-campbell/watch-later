@@ -16,6 +16,7 @@ const MovieCast = ({ cast }) => {
                       src={`${process.env.IMAGE_BASE_URL}${process.env.POSTER_SIZE}${member.profile_path}`}
                       width={350}
                       height={500}
+                      alt="Movie Poster"
                     />
                   </div>
                 </div>

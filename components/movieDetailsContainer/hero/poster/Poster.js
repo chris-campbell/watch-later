@@ -11,6 +11,7 @@ const Poster = ({ poster_path }) => {
         src={`${imageURL}${posterSize}${poster_path}`}
         width={400}
         height={600}
+        alt="Movie Poster"
       />
     </div>
   );

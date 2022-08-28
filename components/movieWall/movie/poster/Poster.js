@@ -10,6 +10,7 @@ const Poster = ({ movieId, posterPath }) => {
         height={830}
         loading="lazy"
         src={`${process.env.IMAGE_BASE_URL}${process.env.POSTER_SIZE}${posterPath}`}
+        alt="Movie Poster"
       />
     </Link>
   );

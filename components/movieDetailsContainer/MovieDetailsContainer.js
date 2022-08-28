@@ -31,7 +31,7 @@ const MovieDetailsContainer = ({ movie, team }) => {
 
     setCast(team.cast);
     setDirectors(directors);
-  }, [team.cast, team.cast]);
+  }, [team.cast, team.crew]);
 
   return (
     <S.Container bdURL={bd} poster={poster}>
