@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MovieContainer = styled.div`
   overflow-y: hidden;
   position: relative;
+
   img {
     border-radius: 0.3rem;
     cursor: pointer;
@@ -13,6 +14,7 @@ export const MovieContainer = styled.div`
       transform: scale(1.05);
       transition: 500ms ease-in;
       opacity: 0.5;
+      border-radius: 0.3rem;
     }
 
     &:active {
@@ -20,9 +22,11 @@ export const MovieContainer = styled.div`
     }
   }
 
-  &:hover .popup {
-    height: 8rem;
-    transition: 500ms;
+  @media (min-width: 754px) {
+    &:hover .popup {
+      height: 8rem;
+      transition: 500ms;
+    }
   }
 
   .popdown {

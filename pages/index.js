@@ -3,7 +3,7 @@ import Image from "next/image";
 import GoogleLogo from "./img/google-logo.svg";
 import styled from "styled-components";
 
-const GoogleLoginButton = styled.button`
+const GoogleLoginButton = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -12,6 +12,9 @@ const GoogleLoginButton = styled.button`
   color: ${({ theme }) => theme.colors.theaterBlue};
   border: none;
   border-radius: 0.3rem;
+  font-size: ${(p) => p.theme.fonts[0]};
+  font-weight: 400;
+  font-style: normal;
   &:hover {
     transition: 300ms ease-in-out;
     opacity: 0.9;
@@ -56,7 +59,7 @@ export default function Home() {
             }
           >
             <Image src={GoogleLogo} width={30} height={30} alt="Google logo" />
-            Sign in with Google
+            <span>Sign in with Google</span>
           </GoogleLoginButton>
         </div>
       )}

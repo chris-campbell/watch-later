@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     * {
-      font-family: ${(p) => p.theme.fonts[0]};
+      font-family: ${(p) => p.theme.fonts[0]} !important;
       margin: 0;
       padding: 0;
     }
@@ -42,7 +42,7 @@ export const theme = {
     cosmos: "#a64684",
     snow: "#ffffff94",
   },
-  fonts: ["Raleway"],
+  fonts: ["Raleway, sans-serif"],
   fontSizes: {
     small: "1em",
     medium: "2em",
