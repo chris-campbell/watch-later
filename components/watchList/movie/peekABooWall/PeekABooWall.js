@@ -13,15 +13,15 @@ const PeekABooWall = ({ removeMovieFromList, title, overview, movieId }) => {
       </span>
       <div className="movie-overview">
         <h2>{title}</h2>
-        <p>
+        <div className="overview-text">
           <LinesEllipsis
             text={overview}
             maxLine="3"
-            ellipsis="..."
+            ellipsis=""
             trimRight
             basedOn="words"
           />
-        </p>
+        </div>
       </div>
     </div>
   );

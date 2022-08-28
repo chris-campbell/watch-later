@@ -7,7 +7,7 @@ const Popup = ({ releaseDate, title, overview }) => {
       <div className="popup-wrapper">
         <h4 className="title">
           {title}
-          <span className="date">{releaseDate.slice(0, 4)}</span>
+          <span className="date">{releaseDate?.slice(0, 4)}</span>
         </h4>
 
         <div className="overview">

@@ -12,6 +12,7 @@ export const MovieContainer = styled.div`
     &:hover {
       transform: scale(1.05);
       transition: 500ms ease-in;
+      opacity: 0.5;
     }
 
     &:active {

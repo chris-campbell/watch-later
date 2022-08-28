@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import { persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { SearchProvider } from "./context/searchContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -18,15 +19,17 @@ function MyApp({ Component, pageProps }) {
       <SessionProvider session={pageProps.session}>
         <GlobalStyles />
         <Provider store={store}>
-          <Layout>
-            <QueryClientProvider client={queryClient}>
-              <Hydrate state={pageProps.dehydratedState}>
-                <PersistGate loading={null} persistor={persistor}>
-                  <Component {...pageProps} />
-                </PersistGate>
-              </Hydrate>
-            </QueryClientProvider>
-          </Layout>
+          <SearchProvider>
+            <Layout>
+              <QueryClientProvider client={queryClient}>
+                <Hydrate state={pageProps.dehydratedState}>
+                  <PersistGate loading={null} persistor={persistor}>
+                    <Component {...pageProps} />
+                  </PersistGate>
+                </Hydrate>
+              </QueryClientProvider>
+            </Layout>
+          </SearchProvider>
         </Provider>
       </SessionProvider>
     </ThemeProvider>
