@@ -1,6 +1,6 @@
 import React from "react";
 import Poster from "./poster/Poster";
-import PeekABooWall from "./peekABooWall/peekABooWall";
+import PeekABooWall from "./peekABooWall/PeekABooWall";
 
 const Movie = ({ poster_path, id, title, overview, removeMovieFromList }) => {
   return (
