@@ -6,7 +6,9 @@ const Directors = ({ directors }) => {
       <h5>Directors</h5>
 
       {directors.map((director) => (
-        <span className="director">{director.name}</span>
+        <span key={director.id} className="director">
+          {director.name}
+        </span>
       ))}
     </div>
   );

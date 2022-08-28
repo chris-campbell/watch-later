@@ -55,7 +55,7 @@ export default function Home() {
               })
             }
           >
-            <Image src={GoogleLogo} width={30} height={30} />
+            <Image src={GoogleLogo} width={30} height={30} alt="Google logo" />
             Sign in with Google
           </GoogleLoginButton>
         </div>

@@ -8,7 +8,7 @@ const MovieCast = ({ cast }) => {
       <div className="movie-cast-wrapper">
         {cast.map((member) =>
           member.profile_path ? (
-            <S.CastMember className="cast-member">
+            <S.CastMember key={member.id} className="cast-member">
               <div className="cast-member-wrapper">
                 <div>
                   <div>

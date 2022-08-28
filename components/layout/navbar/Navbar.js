@@ -62,7 +62,12 @@ const Navbar = () => {
               </div>
 
               <S.Dropdown className="dropdown">
-                <Image src={user.image} width={50} height={50} />
+                <Image
+                  src={user.image}
+                  width={50}
+                  height={50}
+                  alt="User Avatar"
+                />
                 <div className="dropdown-menu">
                   <ul>
                     <li onClick={() => signoutUser()}>Logout</li>
