@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardComponent from "../../components/dashboard/DashboardComponent";
 import { useInfiniteQuery } from "react-query";
+import { getSession } from "next-auth/react";
 
 const Dashboard = () => {
   const apiUrl = process.env.API_URL;
@@ -27,3 +28,20 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
