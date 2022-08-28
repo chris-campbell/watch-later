@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { getSession } from "next-auth/react";
 import MovieDetailsContainer from "../../components/movieDetailsContainer/MovieDetailsContainer";
 
 const MovieDetails = ({ movie, team }) => {
@@ -8,8 +9,19 @@ const MovieDetails = ({ movie, team }) => {
 
 export default MovieDetails;
 
-export async function getServerSideProps({ params }) {
-  const id = params.movieId[0];
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  const id = context.params.movieId[0];
   const apiUrl = process.env.API_URL;
   const apiKey = process.env.API_KEY;
 

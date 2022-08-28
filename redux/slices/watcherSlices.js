@@ -23,7 +23,6 @@ const watcherSlice = createSlice({
         (movie) => movie.id === action.payload.id
       );
 
-      console.log({ idx });
       if (idx === 0) {
         state.value.shift();
       } else {

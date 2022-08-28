@@ -32,7 +32,9 @@ const Navbar = () => {
     <>
       <S.Nav className="nav">
         <div className="nav-wrapper">
-          <span className="nav-logo">WL</span>
+          <span className="nav-logo">
+            <Link href="/movies">WL</Link>
+          </span>
 
           <div className="movie-searcher">
             <IconButton
