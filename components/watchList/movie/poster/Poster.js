@@ -8,6 +8,7 @@ const Poster = ({ posterPath }) => {
       width={800}
       height={1030}
       loading="lazy"
+      alt="Movie Poster"
     />
   );
 };
