@@ -7,8 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeAllMovies } from "../../../redux/slices/watcherSlices";
 import { persistor } from "../../../redux/store";
 import Link from "next/link";
-import * as S from "./styles/styles";
 import PeekABooSearchBar from "./peekABooSearchBar/PeekABooSearchBar";
+import * as S from "./styles/styles";
 
 const Navbar = () => {
   const [toggle, setoggle] = useState(false);
@@ -27,6 +27,11 @@ const Navbar = () => {
 
   const { data: session, loading } = useSession();
   const { user } = session;
+
+  const signoutUser = () => {
+    purge();
+    signOut();
+  };
 
   return (
     <>
@@ -60,8 +65,8 @@ const Navbar = () => {
                 <Image src={user.image} width={50} height={50} />
                 <div className="dropdown-menu">
                   <ul>
-                    <li onClick={() => signOut()}>Logout</li>
-                    <li onClick={() => purge()}>Clear</li>
+                    <li onClick={() => signoutUser()}>Logout</li>
+                    <li onClick={() => purge()}>Clear List</li>
                   </ul>
                 </div>
               </S.Dropdown>

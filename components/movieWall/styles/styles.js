@@ -18,3 +18,10 @@ export const MovieWallContainer = styled.div`
     }
   }
 `;
+
+export const PageTitle = styled.div`
+  margin-bottom: 2rem;
+  h1 {
+    text-transform: capitalize;
+  }
+`;

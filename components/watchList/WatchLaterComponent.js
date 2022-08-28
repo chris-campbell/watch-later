@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeMovie } from "../../redux/slices/watcherSlices";
 import styled from "styled-components";
 import Movie from "./movie/Movie";
+import { ArrowBack } from "@mui/icons-material";
+import Link from "next/link";
 
 const WatchListContainer = styled.div`
   margin-top: 2rem;
@@ -10,9 +12,30 @@ const WatchListContainer = styled.div`
   .watch-list-wrapper {
     max-width: 1200px;
     margin: 0 auto;
+    .back-to-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      width: fit-content;
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.summerOrange};
+        transition: 300ms ease-in-out;
+      }
+
+      svg {
+        font-size: 1.1rem;
+      }
+    }
     h1 {
       font-size: 1rem;
+      font-weight: 600;
       color: ${({ theme }) => theme.colors.snow};
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+
       .list-count {
         color: ${({ theme }) => theme.colors.summerOrange};
         font-style: "italic";
@@ -57,9 +80,10 @@ const WatchListContainer = styled.div`
                 margin-bottom: 0.5rem;
                 margin-top: 2rem;
               }
-              p {
+              .overview-text {
                 color: ${(p) => p.theme.colors.snow};
                 line-height: 1.4;
+                font-size: 0.8rem;
               }
             }
           }
@@ -121,14 +145,26 @@ const WatchLaterComponent = () => {
   return (
     <WatchListContainer>
       <div className="watch-list-wrapper">
+        <p>
+          <Link href="/movies">
+            <a className="back-to-search">
+              <ArrowBack /> Back to search
+            </a>
+          </Link>
+        </p>
         <h1>
-          Watch list (<span className="list-count">{list.length}</span>)
+          Movies in list <span>•</span>{" "}
+          <span className="list-count">{list.length}</span>
         </h1>
 
         <div className="watch-list">
           {list.length > 0 ? (
             list.map((movie) => (
-              <Movie {...movie} removeMovieFromList={removeMovieFromList} />
+              <Movie
+                key={movie.id}
+                {...movie}
+                removeMovieFromList={removeMovieFromList}
+              />
             ))
           ) : (
             <h1>Watch list empty</h1>

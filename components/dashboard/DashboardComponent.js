@@ -1,4 +1,5 @@
 import MovieWall from "../movieWall/MovieWall";
+// import {} from "../../";
 import * as S from "./styles/styles";
 
 const DashboardComponent = ({ query }) => {

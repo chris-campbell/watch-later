@@ -2,13 +2,24 @@ import React from "react";
 import Movie from "./movie/Movie";
 import InfiniteScroll from "react-infinite-scroll-component";
 import FadeLoader from "react-spinners/FadeLoader";
+import { useSearch } from "../../pages/context/searchContext";
 import * as S from "./styles/styles";
 
 const MovieWall = ({ query }) => {
   const { data, status, fetchNextPage, hasNextPage } = query;
+  const { search } = useSearch();
 
   return (
     <S.MovieWallContainer>
+      {search === "" ? (
+        <S.PageTitle>
+          <h1>Popular Movies</h1>
+        </S.PageTitle>
+      ) : (
+        <S.PageTitle>
+          Search: <h1>{search}</h1>
+        </S.PageTitle>
+      )}
       {status === "success" && (
         <InfiniteScroll
           dataLength={data?.pages.length * 20}
