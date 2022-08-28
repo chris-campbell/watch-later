@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import { persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { SearchProvider } from "./context/searchContext";
+import SearchProvider from "./context/searchContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
