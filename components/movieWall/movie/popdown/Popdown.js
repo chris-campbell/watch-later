@@ -5,9 +5,7 @@ const Popdown = ({ addMovieToWatchList }) => {
   return (
     <div className="popdown">
       <div className="popdown-wrapper">
-        <div onClick={() => addMovieToWatchList()}>
-          <AddBoxIcon />
-        </div>
+        <AddBoxIcon onClick={() => addMovieToWatchList()} />
       </div>
     </div>
   );

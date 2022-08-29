@@ -10,15 +10,14 @@ const Popup = ({ releaseDate, title, overview }) => {
           <span className="date">{releaseDate?.slice(0, 4)}</span>
         </h4>
 
-        <div className="overview">
-          <LinesEllipsis
-            text={overview}
-            maxLine="2"
-            ellipsis="..."
-            trimRight
-            basedOn="words"
-          />
-        </div>
+        <LinesEllipsis
+          text={overview}
+          maxLine="2"
+          ellipsis="..."
+          trimRight
+          basedOn="words"
+          className="overview"
+        />
       </div>
     </div>
   );
