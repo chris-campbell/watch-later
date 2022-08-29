@@ -16,8 +16,8 @@ const MovieWall = ({ query }) => {
       <InfiniteScroller
         status={status}
         data={data}
-        next={fetchNextPage}
-        hasMore={hasNextPage}
+        fetchNextPage={fetchNextPage}
+        hasNextPage={hasNextPage}
       />
     </S.MovieWallContainer>
   );

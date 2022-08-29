@@ -26,7 +26,6 @@ function MyApp({ Component, pageProps }) {
                 <Hydrate state={pageProps.dehydratedState}>
                   <PersistGate loading={null} persistor={persistor}>
                     <Component {...pageProps} />
-                    <ReactQueryDevtools initialIsOpen={true} />
                   </PersistGate>
                 </Hydrate>
               </QueryClientProvider>

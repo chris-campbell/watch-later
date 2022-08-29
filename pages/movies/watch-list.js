@@ -1,5 +1,5 @@
 import React from "react";
-import WatchLater from "../../components/watchList/WatchLater";
+import WatchLater from "../../components/watchLater/WatchLater";
 import { getSession } from "next-auth/react";
 
 const watchListPage = () => {
