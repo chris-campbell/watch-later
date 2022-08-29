@@ -1,12 +1,12 @@
 import React from "react";
-import WatchLaterComponent from "../../components/watchList/WatchLaterComponent";
+import WatchLater from "../../components/watchList/WatchLater";
 import { getSession } from "next-auth/react";
 
-const watchList = () => {
-  return <WatchLaterComponent />;
+const watchListPage = () => {
+  return <WatchLater />;
 };
 
-export default watchList;
+export default watchListPage;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
