@@ -10,7 +10,11 @@ export const AddMovieButtonContainer = styled.div`
     color: ${({ theme }) => theme.colors.snow};
     &:hover {
       transform: scale(1.1);
-      transition: 400ms;
+      transition: 200ms;
+    }
+
+    &:active {
+      color: ${({ theme }) => theme.colors.summerOrange};
     }
   }
 `;

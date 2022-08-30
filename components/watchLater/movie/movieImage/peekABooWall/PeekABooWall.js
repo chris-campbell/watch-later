@@ -1,6 +1,5 @@
 import React from "react";
 import MovieOverview from "./movieOverview/MovieOverview";
-import RemoveMovieButton from "./removeMovieButton/RemoveMovieButton";
 
 const PeekABooWall = ({ title, overview }) => {
   return (

@@ -28,6 +28,14 @@ const MovieImageContainer = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: ${(p) => p.theme.colors.summerOrange};
+    }
+
+    &:active {
+      background-color: ${(p) => p.theme.colors.snow};
+    }
   }
 
   img {

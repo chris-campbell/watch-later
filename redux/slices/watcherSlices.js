@@ -10,6 +10,7 @@ const watcherSlice = createSlice({
       const isFound = state.value.find(
         (movie) => movie.id === action.payload.id
       );
+
       if (!isFound) {
         state.value.push(action.payload);
       }
@@ -17,7 +18,6 @@ const watcherSlice = createSlice({
     removeAllMovies(state) {
       state.value = [];
     },
-
     removeMovie(state, action) {
       var idx = state.value.findIndex(
         (movie) => movie.id === action.payload.id

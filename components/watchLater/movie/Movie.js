@@ -4,7 +4,8 @@ import MovieImage from "./movieImage/MovieImage";
 import useDoubleClick from "use-double-click";
 import { useRouter } from "next/router";
 import { removeMovie } from "../../../redux/slices/watcherSlices";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import useFindMovie from "../../../hooks/useFindMovie";
 import { toast } from "react-toastify";
 
 const MovieListItem = styled.div`
@@ -45,8 +46,7 @@ const Movie = ({ poster_path, id, title, overview, movie }) => {
   };
 
   const addMovietoWatchList = () => {
-    const r = dispatch(removeMovie(movie));
-    console.log({ r });
+    dispatch(removeMovie(movie));
     toast(
       ({}) => (
         <div>

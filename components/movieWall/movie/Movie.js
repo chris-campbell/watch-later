@@ -1,7 +1,4 @@
 import React from "react";
-import { addMovie } from "../../../redux/slices/watcherSlices";
-import { useDispatch } from "react-redux";
-import Popdown from "./popdown/Popdown";
 import Popup from "./popup/Popup";
 import Poster from "./poster/Poster";
 import * as S from "./styles/styles";

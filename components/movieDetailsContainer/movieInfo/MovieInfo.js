@@ -5,6 +5,7 @@ import Title from "./title/Title";
 import Overview from "./overview/Overview";
 import AddMovieButton from "./addMoviebutton/AddMovieButton";
 import Directors from "./directors/Directors";
+
 import * as S from "./styles/styles";
 
 const MovieInfo = ({
