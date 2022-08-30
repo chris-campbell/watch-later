@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import { persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { ReactQueryDevtools } from "react-query/devtools";
 import SearchProvider from "./context/searchContext";
 import { ToastContainer } from "react-toastify";
 import "../styles/globals.css";

@@ -8,8 +8,6 @@ const MovieDetailsContainer = ({ movie, team }) => {
   const [cast, setCast] = useState([]);
   const [directors, setDirectors] = useState([]);
 
-  console.log({ movie });
-
   const {
     id,
     title,

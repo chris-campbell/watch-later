@@ -25,7 +25,7 @@ const Navbar = () => {
     dispatch(removeAllMovies());
   };
 
-  const { data: session, loading } = useSession();
+  const { data: session } = useSession();
   const { user } = session;
 
   const signoutUser = () => {
@@ -84,4 +84,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

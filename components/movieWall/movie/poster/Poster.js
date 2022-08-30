@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback } from "react";
 import Image from "next/image";
 import useDoubleClick from "use-double-click";
 import { useRouter } from "next/router";
@@ -23,17 +23,23 @@ const Poster = ({ movieId, posterPath, movie }) => {
     navigate.push(`/movies/${movieId}`);
   };
 
+  const removeMoveNotify = useCallback(
+    () =>
+      toast(
+        ({}) => (
+          <div>
+            Added <span style={{ fontWeight: 600 }}>{movie.title}</span> to
+            watch list.
+          </div>
+        ),
+        { position: "bottom-right" }
+      ),
+    [movie.title]
+  );
+
   const addMovietoWatchList = () => {
     dispatch(addMovie(movie));
-    toast(
-      ({}) => (
-        <div>
-          Added <span style={{ fontWeight: 600 }}>{movie.title}</span> to watch
-          list.
-        </div>
-      ),
-      { position: "bottom-right" }
-    );
+    removeMoveNotify();
   };
 
   return (
@@ -48,4 +54,4 @@ const Poster = ({ movieId, posterPath, movie }) => {
   );
 };
 
-export default Poster;
+export default React.memo(Poster);
