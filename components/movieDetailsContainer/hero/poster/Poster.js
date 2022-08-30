@@ -9,8 +9,8 @@ const Poster = ({ poster_path }) => {
     <div className="hero-poster">
       <Image
         src={`${imageURL}${posterSize}${poster_path}`}
-        width={400}
-        height={600}
+        width={500}
+        height={700}
         alt="Movie Poster"
       />
     </div>

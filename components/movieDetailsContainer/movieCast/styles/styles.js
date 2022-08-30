@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MovieCastContainer = styled.section`
   margin-top: 4rem;
+  padding: 1rem;
   .movie-cast-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -9,6 +10,12 @@ export const MovieCastContainer = styled.section`
     grid-template-columns: repeat(4, 1fr);
     row-gap: 1rem;
     column-gap: 1rem;
+    @media (max-width: 720px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 371px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 `;
 

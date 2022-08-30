@@ -24,48 +24,20 @@ export const MovieContainer = styled.div`
 
   @media (min-width: 754px) {
     &:hover .popup {
-      height: 8rem;
-      transition: 500ms;
-    }
-  }
-
-  .popdown {
-    background-color: transparent;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
-    .popdown-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      padding: 1rem;
-      svg {
-        font-size: 2rem;
-        color: ${({ theme }) => theme.colors.snow};
-        &:hover {
-          transform: scale(1.1);
-          transition: 400ms;
-        }
-
-        &:active {
-          opacity: 0.8;
-          color: ${({ theme }) => theme.colors.summerOrange};
-        }
-      }
+      max-height: 800px;
+      transition: max-height 500ms ease-in-out;
     }
   }
 
   .popup {
     background-color: #03071ee6;
     position: absolute;
-    height: 0rem;
+    max-height: 0;
     bottom: 0;
     right: 0;
     left: 0;
     .popup-wrapper {
-      padding: 1rem;
+      padding: 1.1rem;
       .title {
         margin-bottom: 0.5rem;
         display: flex;

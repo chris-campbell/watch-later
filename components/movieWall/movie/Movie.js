@@ -7,24 +7,17 @@ import Poster from "./poster/Poster";
 import * as S from "./styles/styles";
 
 const Movie = ({ id, title, poster_path, overview, release_date }) => {
-  const dispatch = useDispatch();
-
-  const addMovieToWatchList = () => {
-    const movie = {
-      id,
-      title,
-      poster_path,
-      overview,
-      release_date,
-    };
-
-    dispatch(addMovie(movie));
+  const movie = {
+    id,
+    title,
+    poster_path,
+    overview,
+    release_date,
   };
 
   return (
     <S.MovieContainer>
-      <Poster movieId={id} posterPath={poster_path} />
-      <Popdown addMovieToWatchList={addMovieToWatchList} />
+      <Poster movieId={id} posterPath={poster_path} movie={movie} />
       <Popup title={title} releaseDate={release_date} overview={overview} />
     </S.MovieContainer>
   );

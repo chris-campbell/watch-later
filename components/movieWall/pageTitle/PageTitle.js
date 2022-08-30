@@ -5,7 +5,7 @@ export const PageTitleContainer = styled.div`
   margin-bottom: 2rem;
   h1 {
     text-transform: capitalize;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 `;
 

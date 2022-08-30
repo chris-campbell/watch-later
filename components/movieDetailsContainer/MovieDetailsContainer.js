@@ -8,6 +8,8 @@ const MovieDetailsContainer = ({ movie, team }) => {
   const [cast, setCast] = useState([]);
   const [directors, setDirectors] = useState([]);
 
+  console.log({ movie });
+
   const {
     id,
     title,
@@ -39,6 +41,7 @@ const MovieDetailsContainer = ({ movie, team }) => {
         id={id}
         title={title}
         poster_path={poster_path}
+        backdrop_path={backdrop_path}
         release_date={release_date}
         overview={overview}
         genres={genres}

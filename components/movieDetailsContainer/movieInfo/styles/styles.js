@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const MovieDetailsContainer = styled.div`
-  margin-top: 2rem;
-
   .details-wrapper {
     h3 {
       margin-bottom: 1rem;
