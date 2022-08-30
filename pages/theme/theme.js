@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
 export const theme = {
   colors: {
     theaterBlue: "#03071e",
-    summerOrange: "#f26666",
+    summerOrange: "#a64684",
     cosmos: "#a64684",
     snow: "#ffffff94",
   },

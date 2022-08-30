@@ -6,6 +6,7 @@ const Container = styled.div`
   padding: ${({ toggle }) => (toggle ? "1rem" : "0")};
   background-color: #070c2b;
   transition: height 500ms ease-in;
+  z-index: 10;
 
   input {
     height: ${({ toggle }) => (toggle ? "3rem" : "0rem")};

@@ -4,6 +4,7 @@ import useDoubleClick from "use-double-click";
 import { useRouter } from "next/router";
 import { addMovie } from "../../../../redux/slices/watcherSlices";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const Poster = ({ movieId, posterPath, movie }) => {
   const dispatch = useDispatch();
@@ -24,6 +25,15 @@ const Poster = ({ movieId, posterPath, movie }) => {
 
   const addMovietoWatchList = () => {
     dispatch(addMovie(movie));
+    toast(
+      ({}) => (
+        <div>
+          Added <span style={{ fontWeight: 600 }}>{movie.title}</span> to watch
+          list.
+        </div>
+      ),
+      { position: "bottom-right" }
+    );
   };
 
   return (

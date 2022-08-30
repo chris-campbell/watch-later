@@ -10,7 +10,9 @@ import { persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import SearchProvider from "./context/searchContext";
+import { ToastContainer } from "react-toastify";
 import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -22,6 +24,7 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
           <SearchProvider>
             <Layout>
+              <ToastContainer />
               <QueryClientProvider client={queryClient}>
                 <Hydrate state={pageProps.dehydratedState}>
                   <PersistGate loading={null} persistor={persistor}>

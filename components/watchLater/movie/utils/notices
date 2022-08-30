@@ -1,0 +1,29 @@
+import { toast } from "react-toastify";
+
+// const Message = ({ title }) => (
+//   <p>
+//     Removed <span>{title} </span>from watch list.{" "}
+//   </p>
+// );
+
+// export const removeMoveNotice = (title) =>
+//   toast(() => <Message title={title} />, { position: "bottom-right" });
+
+// const removeMoveNotice = (title) =>
+//   toast(() => <Message title={title} />, { position: "bottom-right" });
+
+// const Msg = ({ closeToast, toastProps }) => (
+//   <div>
+//     <p>just checking</p>
+//     <p>just checking</p>
+//   </div>
+// );
+
+// export const removeMovieNotice = (title) => {
+//   toast(<Msg />);
+//   // toast(Msg) would also work
+// };
+
+export const removeMovieNotice = toast(({ closeToast }) => (
+  <div>Functional swag 😎</div>
+));

@@ -2,10 +2,9 @@ import React from "react";
 import MovieOverview from "./movieOverview/MovieOverview";
 import RemoveMovieButton from "./removeMovieButton/RemoveMovieButton";
 
-const PeekABooWall = ({ title, overview, movieId }) => {
+const PeekABooWall = ({ title, overview }) => {
   return (
     <div className="peekaboo-wall">
-      <RemoveMovieButton movieId={movieId} />
       <MovieOverview title={title} overview={overview} />
     </div>
   );

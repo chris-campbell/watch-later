@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import MovieImage from "./movieImage/MovieImage";
+import useDoubleClick from "use-double-click";
+import { useRouter } from "next/router";
+import { removeMovie } from "../../../redux/slices/watcherSlices";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const MovieListItem = styled.div`
   display: grid;
@@ -22,9 +27,39 @@ const MovieListItem = styled.div`
   }
 `;
 
-const Movie = ({ poster_path, id, title, overview }) => {
+const Movie = ({ poster_path, id, title, overview, movie }) => {
+  const buttonRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useRouter();
+
+  useDoubleClick({
+    onSingleClick: () => navigateToMovie(),
+    onDoubleClick: () => addMovietoWatchList(),
+
+    ref: buttonRef,
+    latency: 250,
+  });
+
+  const navigateToMovie = () => {
+    navigate.push(`/movies/${id}`);
+  };
+
+  const addMovietoWatchList = () => {
+    const r = dispatch(removeMovie(movie));
+    console.log({ r });
+    toast(
+      ({}) => (
+        <div>
+          Removed <span style={{ fontWeight: 600 }}>{title}</span> from watch
+          list.
+        </div>
+      ),
+      { position: "bottom-right", closeOnClick: true }
+    );
+  };
+
   return (
-    <MovieListItem className="list-movie">
+    <MovieListItem ref={buttonRef} className="list-movie">
       <MovieImage
         poster_path={poster_path}
         movieId={id}
