@@ -16,7 +16,6 @@ const MovieImageContainer = styled.div`
   }
   .peekaboo-wall {
     background-color: ${(p) => p.theme.colors.theaterBlue};
-    transition: 300ms ease-in;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -30,11 +29,11 @@ const MovieImageContainer = styled.div`
     right: 0;
     cursor: pointer;
     &:hover {
-      background-color: ${(p) => p.theme.colors.summerOrange};
+      background-color: ${(p) => p.theme.colors.theaterBlue};
     }
 
     &:active {
-      background-color: ${(p) => p.theme.colors.snow};
+      background-color: ${(p) => p.theme.colors.summerOrange};
     }
   }
 

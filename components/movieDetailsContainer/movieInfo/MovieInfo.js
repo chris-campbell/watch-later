@@ -9,6 +9,7 @@ import Directors from "./directors/Directors";
 import * as S from "./styles/styles";
 
 const MovieInfo = ({
+  movieId,
   title,
   release_date,
   overview,
@@ -16,6 +17,7 @@ const MovieInfo = ({
   vote,
   directors,
   addToWatch,
+  movie,
 }) => {
   return (
     <S.MovieDetailsContainer className="movie-details">
@@ -25,7 +27,11 @@ const MovieInfo = ({
         <Genres genres={genres} />
         <PopularityMeter vote={vote} />
         <Directors directors={directors} />
-        <AddMovieButton addToWatch={addToWatch} />
+        <AddMovieButton
+          addToWatch={addToWatch}
+          movie={movie}
+          movieId={movieId}
+        />
       </div>
     </S.MovieDetailsContainer>
   );

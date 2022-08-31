@@ -4,7 +4,6 @@ import useDoubleClick from "use-double-click";
 import { useRouter } from "next/router";
 import { addMovie } from "../../../../redux/slices/watcherSlices";
 import { useDispatch, useSelector } from "react-redux";
-import useFindMovie from "../../../../hooks/useFindMovie";
 import { toast } from "react-toastify";
 
 const Poster = ({ movieId, posterPath, movie }) => {
@@ -12,7 +11,6 @@ const Poster = ({ movieId, posterPath, movie }) => {
   const navigate = useRouter();
   const buttonRef = useRef();
 
-  // const isMovieFound = useFindMovie();
   const movies = useSelector((s) => s.value);
 
   useDoubleClick({
@@ -41,17 +39,14 @@ const Poster = ({ movieId, posterPath, movie }) => {
     [movie.title]
   );
 
-  console.log(movies);
-
   const addMovietoWatchList = () => {
-    const isMovie = useFindMovie(movies, movie.id);
+    const isMovie = movies.find((m) => m.id === movieId);
 
-    if (!isMovie) {
-      removeMoveNotify();
-      return dispatch(addMovie(movie));
-    }
+    if (isMovie)
+      return toast.warn("Movie already in list.", { position: "bottom-right" });
 
-    return toast.warn("Movie already in list.", { position: "bottom-right" });
+    dispatch(addMovie(movie));
+    removeMoveNotify();
   };
 
   return (
@@ -66,4 +61,4 @@ const Poster = ({ movieId, posterPath, movie }) => {
   );
 };
 
-export default React.memo(Poster);
+export default Poster;

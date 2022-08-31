@@ -36,7 +36,7 @@ const MovieDetailsContainer = ({ movie, team }) => {
   return (
     <S.Container bdURL={bd} poster={poster}>
       <Hero
-        id={id}
+        movieId={id}
         title={title}
         poster_path={poster_path}
         backdrop_path={backdrop_path}
@@ -45,6 +45,7 @@ const MovieDetailsContainer = ({ movie, team }) => {
         genres={genres}
         directors={directors}
         vote={vote_average}
+        movie={movie}
       />
 
       <MovieCast cast={cast} />

@@ -42,7 +42,7 @@ const HeroContainer = styled.section`
 `;
 
 const Hero = ({
-  id,
+  movieId,
   title,
   poster_path,
   backdrop_path,
@@ -51,6 +51,7 @@ const Hero = ({
   overview,
   genres,
   vote,
+  movie,
 }) => {
   const dispatch = useDispatch();
 
@@ -59,8 +60,15 @@ const Hero = ({
   const bd = `${imageURL}${backdropSize}${backdrop_path}`;
 
   const addToWatch = () => {
-    const movie = { id, title, poster_path, overview, release_date };
-    dispatch(addMovie(movie));
+    const id = movieId;
+    const movieData = {
+      id,
+      title,
+      poster_path,
+      overview,
+      release_date,
+    };
+    dispatch(addMovie(movieData));
   };
 
   return (
@@ -69,6 +77,8 @@ const Hero = ({
         <Poster poster_path={poster_path} />
 
         <MovieInfo
+          movieId={movieId}
+          movie={movie}
           title={title}
           release_date={release_date}
           overview={overview}
