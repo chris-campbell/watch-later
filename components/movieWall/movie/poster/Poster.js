@@ -12,6 +12,7 @@ const Poster = ({ movieId, posterPath, movie }) => {
   const navigate = useRouter();
   const buttonRef = useRef();
 
+  // const isMovieFound = useFindMovie();
   const movies = useSelector((s) => s.value);
 
   useDoubleClick({
@@ -39,6 +40,8 @@ const Poster = ({ movieId, posterPath, movie }) => {
       ),
     [movie.title]
   );
+
+  console.log(movies);
 
   const addMovietoWatchList = () => {
     const isMovie = useFindMovie(movies, movie.id);
