@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Redux imports
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 // Imported Components
 import BackButton from "./backButton/BackButton";
@@ -19,8 +20,15 @@ const WatchListContainer = styled.div`
   }
 `;
 
-const WatchLater = () => {
+const WatchLater = ({ session }) => {
   const list = useSelector((state) => state.value);
+
+  const router = useRouter();
+  useEffect(() => {
+    if (!session) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <WatchListContainer>

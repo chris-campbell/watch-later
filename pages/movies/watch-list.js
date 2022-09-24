@@ -4,14 +4,7 @@ import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const watchListPage = ({ session }) => {
-  const router = useRouter();
-  useEffect(() => {
-    if (!session) {
-      router.push("/");
-    }
-  }, []);
-
-  return <WatchLater />;
+  return <WatchLater session={session} />;
 };
 
 export default watchListPage;
