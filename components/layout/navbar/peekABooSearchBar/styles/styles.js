@@ -10,7 +10,8 @@ const Container = styled.div`
 
   input {
     height: ${({ toggle }) => (toggle ? "3rem" : "0rem")};
-    transition: height 300ms ease-in;
+    visibility: ${({ toggle }) => (toggle ? "visible" : "hidden")};
+    transition: all 300ms ease-in-out;
     width: 100%;
     max-width: 40rem;
     background-color: #ffffff12;

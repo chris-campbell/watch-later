@@ -5,12 +5,14 @@ import { useRouter } from "next/router";
 import { addMovie } from "../../../../redux/slices/watcherSlices";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import BrokenImage from "./img/brokenImg.png";
 
 const Poster = ({ movieId, posterPath, movie }) => {
   const dispatch = useDispatch();
   const navigate = useRouter();
   const buttonRef = useRef();
 
+  console.log({ posterPath });
   const movies = useSelector((s) => s.value);
 
   useDoubleClick({
@@ -51,12 +53,16 @@ const Poster = ({ movieId, posterPath, movie }) => {
 
   return (
     <div ref={buttonRef}>
-      <Image
-        width={500}
-        height={730}
-        src={`${process.env.IMAGE_BASE_URL}${process.env.POSTER_SIZE}${posterPath}`}
-        alt="Movie Poster"
-      />
+      {posterPath ? (
+        <Image
+          width={500}
+          height={730}
+          src={`${process.env.IMAGE_BASE_URL}${process.env.POSTER_SIZE}${posterPath}`}
+          alt="Movie Poster"
+        />
+      ) : (
+        <Image width={500} height={730} src={BrokenImage} alt="Movie Poster" />
+      )}
     </div>
   );
 };

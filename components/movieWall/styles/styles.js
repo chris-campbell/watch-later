@@ -8,6 +8,7 @@ export const MovieWallContainer = styled.div`
     grid-template-columns: repeat(4, 1fr);
     row-gap: 1rem;
     column-gap: 1rem;
+    margin-bottom: 1rem;
 
     @media (max-width: 784px) {
       grid-template-columns: repeat(2, 1fr);

@@ -11,7 +11,11 @@ const nextConfig = {
     GENRE_URL: process.env.GENRE_URL,
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "image.tmdb.org"],
+    domains: [
+      "lh3.googleusercontent.com",
+      "image.tmdb.org",
+      "via.placeholder.com",
+    ],
   },
 };
 
