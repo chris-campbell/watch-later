@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Search from "@mui/icons-material/Search";
+import SearchIcon from "./img/searchIcon.svg";
+
 import IconButton from "@mui/material/IconButton";
 import { signOut, useSession } from "next-auth/react";
 import { useSelector, useDispatch } from "react-redux";
@@ -50,7 +51,7 @@ const Navbar = () => {
               sx={{ mr: 2 }}
               onClick={toggleBar}
             >
-              <Search />
+              <Image src={SearchIcon} width={20} height={20} />
             </IconButton>
           </div>
 
